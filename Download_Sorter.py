@@ -6,44 +6,43 @@ paths = ['Photos','Videos','Executables','Compressed','Documents','Presentations
 exeptions =['Download_Sorter.py']
 for path in paths:
     exeptions.append(path)
-
 for path in paths:
     if os.path.isdir(path)==False:
         os.mkdir(path)
 
-vExtensions = ['.mp4','.MOV','.mpx','.mpeg','.flv','MP4','webm','mov']
-pExtensions = ['.jpeg','.jpg','.png','.PNG','.gif','.JPG','HEIC']
-cExtensions = ['.zip','.rar','.7z','.tgz','.gz','bz2']
-coExtensions = ['.cs','.py']
-eExtensions = ['.exe','.msi']
-dExtensions = ['.pdf','.docx','.doc','.rtf','.txt','RTF']
-prExtensions = ['.pptx','.ppsx','.ppt']
-aExtensions = ['.mp3','.flv','ogg']
-sExtensions = ['xlsx','xlsm','xlsb','xltx','xls']
+videoExtentions = ['.mp4','.MOV','.mpx','.mpeg','.flv','MP4','webm','mov']
+photoExtentions = ['.jpeg','.jpg','.png','.PNG','.gif','.JPG','HEIC','.webp']
+coppressedExtentions = ['.zip','.rar','.7z','.tgz','.gz','.bz2']
+codexeExtentions = ['.cs','.py','.html','.css']
+exeExtentions = ['.exe','.msi']
+docsExtentions = ['.pdf','.docx','.doc','.rtf','.txt','RTF']
+presentationExtentions = ['.pptx','.ppsx','.ppt']
+audioExtentions = ['.mp3','.flv','ogg']
+spreadsheetExtentions = ['xlsx','xlsm','xlsb','xltx','xls']
 everything = [x for x in os.listdir() if x not in exeptions]
 print(everything)
 
 for file in everything:
-    if any(c in file for c in vExtensions):
+    if any(c in file for c in videoExtentions):
         fType = 'Videos'
-    elif any(c in file for c in pExtensions):
+    elif any(c in file for c in photoExtentions):
         fType = 'Photos'
-    elif any(c in file for c in eExtensions):
+    elif any(c in file for c in exeExtentions):
         fType = 'Executables'
-    elif any(c in file for c in cExtensions):
+    elif any(c in file for c in coppressedExtentions):
         fType = 'Compressed'
-    elif any(c in file for c in dExtensions):
+    elif any(c in file for c in docsExtentions):
         fType = 'Documents'
-    elif any(c in file for c in prExtensions):
+    elif any(c in file for c in presentationExtentions):
         fType = 'Presentations'
-    elif any(c in file for c in aExtensions):
+    elif any(c in file for c in audioExtentions):
         fType = 'Audio'
-    elif any(c in file for c in coExtensions):
+    elif any(c in file for c in codexeExtentions):
         fType = 'Code'
-    elif any(c in file for c in sExtensions):
+    elif any(c in file for c in spreadsheetExtentions):
         fType = 'Spreadsheets'
     else:
         fType = 'Other'
     print('moving - '+file+' - into '+fType)
-    os.rename(file,fType+'/'+file)
+    os.rename(file,f'{fType}/{file}')
 time.sleep(15)
